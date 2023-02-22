@@ -7,7 +7,7 @@ namespace dotnet_API.Dtos.Character
 {
     public class AddCharacterDto
     {
-        public int Id  {get; set;}
+    
     public string Name {get; set;} = "Frodo";
     public int Hitpoints {get; set;} = 100;
     public int Strength {get; set;} =10;
