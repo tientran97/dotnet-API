@@ -25,13 +25,17 @@ namespace dotnet_API.Controllers
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
             int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
-            return Ok(await _characterService.GetAllCharacters(userId));
+            return Ok(await _characterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> GetSingle(int id)
         {
-            return Ok(await _characterService.GetCharacterById(id));
+            var respone = await _characterService.GetCharacterById(id);
+            if( respone.Data is null){
+                return NotFound(respone);
+            } 
+            return Ok(respone);
         }
 
         [HttpPost]

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dotnet_API.Dtos.Weapon;
 
 namespace dotnet_API
 {
@@ -11,6 +12,7 @@ namespace dotnet_API
         {
             CreateMap<Character, GetCharacterDto>();
             CreateMap<AddCharacterDto, Character>();
+            CreateMap<Weapon, GetWeaponDto>();
         }        
     }
 }

@@ -4,10 +4,11 @@ global using dotnet_API.Dtos.Character;
 global using AutoMapper;
 global using Microsoft.EntityFrameworkCore;
 global using dotnet_API.Data;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Swashbuckle.AspNetCore.Filters;
-using Microsoft.OpenApi.Models;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using Swashbuckle.AspNetCore.Filters;
+global using Microsoft.OpenApi.Models;
+global using dotnet_API.Services.WeaponServoce;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
                     ValidateAudience =false
                 };
         });
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IWeaponService, WeaponService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
